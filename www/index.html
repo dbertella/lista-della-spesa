@@ -10,7 +10,7 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <!-- Firebase -->
-    <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+    <!--script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script-->
     <!-- your app's js -->
     <script src="js/app.js"></script>
 
@@ -25,7 +25,7 @@
      
       <div class="buttons"><button class="button" ng-click="data.showDelete = !data.showDelete">Edit</button></div>
       <h1 class="title">La lista della spesa</h1>
-      <div class="buttons"><button class="button" ng-click="data.showForm = !data.showForm">Add</button></div>
+      <div class="buttons"><button class="button" ng-click="data.showForm = !data.showForm" ng-disabled="data.showForm">Add</button></div>
     </ion-header-bar>
     <div class="bar bar-subheader" ng-show="data.showForm">
       <form ng-submit="addTodo()">
