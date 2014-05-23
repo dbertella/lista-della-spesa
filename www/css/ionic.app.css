@@ -6440,3 +6440,6 @@ a.button {
 .platform-c:not(.enable-transitions) * {
   -webkit-transition: none !important;
   transition: none !important; }
+
+#content-pad-true {
+  padding-top: 44px; }

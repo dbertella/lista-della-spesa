@@ -9,26 +9,41 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <!-- Firebase -->
+    <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
   </head>
-  <body ng-app="starter">
+  <body ng-app="starter" ng-controller="TodoCtrl">
+
+     
+    <ion-header-bar class="bar-energized">
+     
+      <div class="buttons"><button class="button" ng-click="data.showDelete = !data.showDelete">Edit</button></div>
+      <h1 class="title">La lista della spesa</h1>
+      <div class="buttons"><button class="button" ng-click="data.showForm = !data.showForm">Add</button></div>
+    </ion-header-bar>
+    <div class="bar bar-subheader" ng-show="data.showForm">
+      <form ng-submit="addTodo()">
+        <input type="text" ng-model="todoText"  size="30"
+               placeholder="Aggiungi il prodotto da comprare">
+        <button class="button right" type="submit" ng-hide="!todoText">add</button>
+      </form>
+    </div>
 
 
-      <ion-header-bar class="bar-energized">
-        <div class="buttons"><button class="button" ng-click="">Edit</button></div>
-        <h1 class="title">La lista della spesa</h1>
-        <div class="buttons"><button class="button" ng-click="addTodo()">Add</button></div>
-      </ion-header-bar>
-      <ion-content>
+    <ion-content id="content-pad-{{ data.showForm }}">
 
-      </ion-content>
-
-
+      <ion-list show-delete="data.showDelete">
+        <ion-item ng-repeat="todo in todos">
+          <span class="done-{{todo.done}}">{{ todo.name }}</span>
+        <ion-delete-button class="ion-minus-circled" ng-click="todos.splice($index, 1)"></ion-delete-button>
+      </ion-item>
+    </ion-content>
 
   </body>
 </html>
